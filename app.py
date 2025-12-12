@@ -3,7 +3,7 @@ import random
 import time
 
 # --- SAYFA AYARLARI ---
-st.set_page_config(page_title="Hayat Yolu: Gerçekçi Mod", page_icon="💸", layout="wide")
+st.set_page_config(page_title="Hayat Yolu: Zaman Karşı", page_icon="⏳", layout="wide")
 
 # --- CSS TASARIM (SİYAH YAZI & NET GÖRÜNÜM) ---
 st.markdown("""
@@ -122,6 +122,18 @@ senaryolar = [
         {"ad": "Araba Al", "grup": "KONFOR", "tag": "tag-wants", "icon": "🚗", "fiyat": 5000, "mutluluk": 25, "gelecek": -30, "ders": "Büyük Masraf: Araba sadece alış fiyatı değil, benzin ve bakımla da para yer."},
         {"ad": "Metroya Bin", "grup": "SABIR", "tag": "tag-save", "icon": "🚇", "fiyat": 200, "mutluluk": -10, "gelecek": 10, "ders": "Toplu Taşıma: Paran cebinde kaldı."},
         {"ad": "Bisiklet Al", "grup": "SAĞLIK", "tag": "tag-needs", "icon": "🚲", "fiyat": 1000, "mutluluk": 15, "gelecek": 15, "ders": "Sağlıklı Yaşam: Hem spor yaptın hem para biriktirdin."}
+    ]},
+     # 5. AY
+    {"baslik": "Sağlık Sorunu", "soru": "Dişin ağrıyor. Ne yapacaksın?", "kartlar": [
+        {"ad": "Estetik Yaptır", "grup": "KEYİFÇİ", "tag": "tag-wants", "icon": "✨", "fiyat": 4000, "mutluluk": 15, "gelecek": -10, "ders": "Estetik: Sağlıktan ziyade görünüşe harcadın."},
+        {"ad": "Devlet Hastanesi", "grup": "YATIRIMCI", "tag": "tag-save", "icon": "🏥", "fiyat": 0, "mutluluk": -10, "gelecek": 5, "ders": "Devlet: Sıra bekledin ama para cebinde kaldı."},
+        {"ad": "Özel Dolgu", "grup": "GERÇEKÇİ", "tag": "tag-needs", "icon": "🦷", "fiyat": 1500, "mutluluk": 5, "gelecek": 0, "ders": "Özel: Hızlı ve temiz çözüm."}
+    ]},
+    # 6. AY (FİNAL)
+    {"baslik": "Yıl Sonu İndirimi", "soru": "Büyük indirimler başladı!", "kartlar": [
+        {"ad": "Marka Kıyafetler", "grup": "KEYİFÇİ", "tag": "tag-wants", "icon": "👗", "fiyat": 3000, "mutluluk": 20, "gelecek": -15, "ders": "Moda: Çok şıksın ama cüzdan boşaldı."},
+        {"ad": "Hisse Senedi", "grup": "YATIRIMCI", "tag": "tag-save", "icon": "📈", "fiyat": 2000, "mutluluk": -5, "gelecek": 25, "ders": "Borsa: Şirketlere ortak oldun."},
+        {"ad": "Kışlık Bot", "grup": "GERÇEKÇİ", "tag": "tag-needs", "icon": "🥾", "fiyat": 1000, "mutluluk": 5, "gelecek": 5, "ders": "İhtiyaç: Sadece lazım olanı aldın."}
     ]}
 ]
 
@@ -165,7 +177,7 @@ def yeniden_baslat():
 # 1. HUD (ÜST BİLGİ PANELİ)
 st.markdown(f"""
     <div class="hud-container">
-        <div class="hud-item"><div class="hud-label">AY</div><div class="hud-value">{min(st.session_state.ay, 4)} / 4</div></div>
+        <div class="hud-item"><div class="hud-label">AY</div><div class="hud-value">{min(st.session_state.ay, 6)} / 6</div></div>
         <div class="hud-item"><div class="hud-label">CÜZDAN</div><div class="hud-value" style="color:#2e7d32;">{st.session_state.nakit} ₺</div></div>
         <div class="hud-item"><div class="hud-label">MUTLULUK</div><div class="hud-value" style="color:#c62828;">% {st.session_state.mutluluk}</div></div>
         <div class="hud-item"><div class="hud-label">GELECEK</div><div class="hud-value" style="color:#1565c0;">{st.session_state.gelecek}</div></div>
